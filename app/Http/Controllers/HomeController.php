@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 
 class HomeController extends Controller
 {
@@ -15,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $homeData = json_decode(file_get_contents(public_path(). '/assets/GP_JSON/home.json'), true);
-        // dd($homeData);
+        // dd($homeData['hero']['values']);
         return view('home', compact('homeData'));
     }
 

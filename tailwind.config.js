@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -8,5 +9,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

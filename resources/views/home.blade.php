@@ -10,9 +10,10 @@
 @endforeach
 
 @section('content')
-
-
-Welcome {{$homeData['pageTitle']}}
-
+    <div class="container mx-auto">
+        @section('banner_title', $homeData['pageTitle'])
+        <!-- <livewire:hero data="heroData" /> -->
+        @livewire('hero')
+    </div>
 
 @endsection

@@ -1,6 +1,6 @@
 <!-- Header component -->
-<header class="header sticky top-0 shadow-md">
-    <nav class="bg-gray-800" x-data="{ dropdownExpanded: false, navExpanded: false, toggleNav() {this.navExpanded = !this.navExpanded} }">
+<header class="header sticky top-0 shadow-md shadow-slate-100">
+    <nav class="bg-white dark:bg-gray-800" x-data="{ dropdownExpanded: false, navExpanded: false, toggleNav() {this.navExpanded = !this.navExpanded} }">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
@@ -10,17 +10,17 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                        <a href="/" class="dark:bg-gray-900 dark:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
 
-                        <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="/notes" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Notes</a>
+                        <a href="/about" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="/notes" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Notes</a>
 
-                        <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact us</a>
+                        <a href="/contact" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact us</a>
                         </div>
                     </div>
                 </div>
                 <div class="ml-4 flex items-center md:ml-6">
-                    <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <button type="button" class="rounded-full dark:bg-gray-800 p-1 dark:text-gray-400 dark:hover:text-white text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span class="sr-only">View notifications</span>
                         <!-- Heroicon name: outline/bell -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
