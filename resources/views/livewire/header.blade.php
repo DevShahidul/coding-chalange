@@ -56,15 +56,30 @@
                         </div>
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
+                        <ul class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/" class="dark:bg-gray-900 dark:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                        <li class="relative group">
+                            <a href="/" class="dark:bg-gray-900 dark:text-white px-4 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                            <div class="absolute left-0 z-10 w-48 pointer-events-none group-hover:pointer-events-auto mt-1 origin-top-left bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out duration-300 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Dropdown item</a>
+
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Dropdown item</a>
+
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Dropdown item</a>
+                            </div>
+                            <!-- <div class="absolute z-10 hidden bg-grey-200 group-hover:flex flex-col py-2 w-44 bg-white dark:bg-gray-700 shadow-sm">
+                                <a href="#" class="px-2 py-2 bg-white hover:bg-gray-200">Dropdown item</a>
+                                <a href="#" class="px-2 py-2 bg-white hover:bg-gray-200">Dropdown item</a>
+                                <a href="#" class="px-2 py-2 bg-white hover:bg-gray-200">Dropdown item</a>
+                                <a href="#" class="px-2 py-2 bg-white hover:bg-gray-200">Dropdown item</a>
+                            </div> -->
+                        </li>
 
                         <a href="/about" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="/notes" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Notes</a>
 
                         <a href="/contact" class="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact us</a>
-                        </div>
+                        </ul>
                     </div>
                 </div>
                 <div class="ml-4 flex items-center md:ml-6">
@@ -106,7 +121,7 @@
                         </button>
 
                         <!-- Profile dropdown -->
-                        <div x-show="dropdownExpanded" @click.outside="dropdownExpanded = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                        <div x-show="dropdownExpanded" @click.outside="dropdownExpanded = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" x-cloak class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
 
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>

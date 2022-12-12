@@ -12,6 +12,7 @@
 
 @section('content')
     <div class="container mx-auto">
+        <x-dropdown-nav />
         @section('banner_title', $homeData['pageTitle'])
         <x-block-section :data="$heroData" />
         <h1 class="mt-6 lg:mt-12 text-3xl font-bold tracking-tight text-gray-900 capitalize">Content Blocks</h1>
