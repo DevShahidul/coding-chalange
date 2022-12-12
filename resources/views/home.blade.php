@@ -2,6 +2,7 @@
 <?php
     $metaData = $homeData['metadata'];
     $heroData = $homeData['hero']['values'];
+    $blockData = $homeData['blocks']['values'];
 ?>
 
 @section('title', $homeData['pageType'])
@@ -12,8 +13,9 @@
 @section('content')
     <div class="container mx-auto">
         @section('banner_title', $homeData['pageTitle'])
-        <!-- <livewire:hero data="heroData" /> -->
-        @livewire('hero')
+        <x-block-section :data="$heroData" />
+        <h1 class="mt-6 lg:mt-12 text-3xl font-bold tracking-tight text-gray-900 capitalize">Content Blocks</h1>
+        <x-block-section :data="$blockData" column="grid-cols-1" height="min-h-96 lg:h-auto" />
     </div>
 
 @endsection

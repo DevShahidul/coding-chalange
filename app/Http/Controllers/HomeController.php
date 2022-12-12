@@ -13,8 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $homeData = json_decode(file_get_contents(public_path(). '/assets/GP_JSON/home.json'), true);
-        // dd($homeData['hero']['values']);
+        $homeData = json_decode(file_get_contents(public_path(). '/assets/GP_JSON/components.json'), true);
+        dd($homeData);
         return view('home', compact('homeData'));
     }
 
