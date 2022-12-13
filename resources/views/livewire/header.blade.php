@@ -58,13 +58,16 @@
                     <div class="hidden md:block">
                         <ul class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <li class="relative group">
+                            <a href="/" class="{{Request::is('/') ? 'text-teal-600 dark:bg-gray-700 dark:text-gray-300 dark:group-hover:bg-gray-700 dark:group-hover:text-gray-300 group-hover:text-teal-600' : 'text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group-hover:text-gray-900 dark:group-hover:text-white'}} px-4 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                        </li>
                         @foreach ($navItems as $item)
                             <li class="relative group">
-                                <a href="{{$item['url']}}" class="dark:bg-gray-900 dark:text-white px-4 py-2 rounded-md text-sm font-medium" aria-current="page">{{$item['title']}}</a>
+                                <a href="{{$item['url']}}" class="{{Request::is($item['url']) ? 'text-teal-600 group-hover:text-teal-600 dark:text-gray-300 dark:bg-gray-700 dark:group-hover:text-gray-300 dark:group-hover:bg-gray-700' : 'dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white dark:group-hover:bg-gray-700 dark:group-hover:text-white text-gray-600 hover:text-gray-900 group-hover:text-gray-900'}} px-4 py-2 rounded-md text-sm font-medium" aria-current="page">{{$item['title']}}</a>
                                 @if(!empty($item['children']))
-                                <div class="absolute left-0 z-10 w-48 pointer-events-none group-hover:pointer-events-auto mt-1 origin-top-left bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out duration-300 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <div x-cloak class="absolute left-0 z-10 w-48 pointer-events-none group-hover:pointer-events-auto mt-1 origin-top-left bg-white dark:bg-gray-700 dark:text-gray-300 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out duration-300 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                     @foreach ($item['children'] as $child)
-                                        <a href="{{$child['url']}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">{{$child['title']}}</a>
+                                        <a href="{{$child['url']}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-0">{{$child['title']}}</a>
                                     @endforeach
                                 </div>
                                 @endif
@@ -112,12 +115,12 @@
                         </button>
 
                         <!-- Profile dropdown -->
-                        <div x-show="dropdownExpanded" @click.outside="dropdownExpanded = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" x-cloak class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                        <div x-show="dropdownExpanded" @click.outside="dropdownExpanded = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" x-cloak class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-700 dark:text-gray-300 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
 
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
 
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                         </div>
                     </div>
                     <div class="-mr-2 flex md:hidden">

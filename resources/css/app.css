@@ -6,12 +6,12 @@
     html {
         scroll-behavior: smooth;
     }
-    /* .max-width{
-        @apply max-w-7xl
-    } */
     .container{
         @apply mx-auto px-4 sm:px-6 lg:px-8
     }
+}
+
+@layer components {
     .hero-card *{
         @apply w-full h-full
     }
