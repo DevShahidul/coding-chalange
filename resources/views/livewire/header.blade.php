@@ -5,7 +5,8 @@
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="text-teal-600 dark:text-teal-300">
+                        <a href="/" class="text-3xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Brand</a>
+                        <!-- <div class="text-teal-600 dark:text-teal-300">
                             <svg
                                 class="h-8"
                                 viewBox="0 0 118 24"
@@ -53,7 +54,7 @@
                                 fill="currentColor"
                                 />
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="hidden md:block">
                         <ul class="ml-10 flex items-baseline space-x-4">
