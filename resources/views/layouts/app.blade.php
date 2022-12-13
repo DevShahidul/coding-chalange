@@ -26,7 +26,6 @@
     </head>
     <body class="antialiased">
        <livewire:header /> 
-       <livewire:banner /> 
 
         @yield('content')
 
