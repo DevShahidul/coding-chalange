@@ -24,12 +24,11 @@ class Product extends Component
 
     public function mount($data){
         $this->productInfo = $data['contentElement']['values'];
-        // dd($this->productInfo);
         $this->productObject = $this->productInfo['productObject'];
         $this->productVarientObject = $this->productInfo['productVariantObjects'][0];
         $this->title = $this->productObject['title'];
         $this->sku = $this->productInfo['productSku'];
-        $this->price = $this->productVarientObject['price'];
+        $this->price = $this->productInfo['googleUnitPricingMeasure'];
         $this->currency = $data['metadata']['values']['currency'];
         $this->description = $this->productObject['description'];
         $this->description_medium = $this->productInfo['mediumDescription'];
