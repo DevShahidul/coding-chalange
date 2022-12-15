@@ -11,16 +11,17 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $homeData = json_decode(file_get_contents(public_path(). "/assets/GP_JSON/home.json"), true);
+        $homeData = $this->getJsonData("home.json");
         // dd($homeData);
         return view('home', compact('homeData'));
     }
 
     public function productView($product_sku)
     {
-        $productData = json_decode(file_get_contents(public_path(). "/assets/GP_JSON/product.json"), true);
+        $productData = $this->getJsonData("product.json");
         $productSku = $productData['contentElement']['values']['productSku'];
 
         if($product_sku === $productSku){
@@ -33,8 +34,13 @@ class PageController extends Controller
 
     public function catalog()
     {
-        $catalogData = json_decode(file_get_contents(public_path(). "/assets/GP_JSON/catalog.json"), true);
+        $catalogData = $this->getJsonData("catalog.json");
         // dd($homeData);
         return view('product-catalog', compact('catalogData'));
+    }
+
+    public function getJsonData($fileName = 'home.json'){
+        $data = json_decode(file_get_contents(public_path(). "/assets/GP_JSON/".$fileName), true);
+        return $data;
     }
 }
