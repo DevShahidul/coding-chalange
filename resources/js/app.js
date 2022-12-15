@@ -25,6 +25,7 @@ Alpine.store('cartData', () => ({
     },
 
     addToCart(item_sku){
+        console.log(item_sku);
         this.cartItems = this.cartItem.push(item_sku)
     }
 }))

@@ -22,7 +22,7 @@
         @endif
 
         <div class="lg:sticky lg:top-24">
-            <form @submit.prevent="cartData.addProduct($store.cartData.newProduct)" class="space-y-4 lg:pt-8">
+            <form @submit.prevent="$store.addToCart({{$sku}})" class="space-y-4 lg:pt-8">
                 <fieldset>
                     <legend class="text-lg font-bold">MPN or GTIN</legend>
                     @if(!empty($productInfo['manufacturerPartNumber']) || $productInfo['manufacturerPartNumber'] !== null)
@@ -177,7 +177,7 @@
                     </p>
                 </fieldset>
 
-                <button @click="addToCart({{$sku}})" type="submit" class="w-full rounded bg-red-700 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white">
+                <button type="submit" class="w-full rounded bg-red-700 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white">
                     Add to cart
                 </button>
             </form>
