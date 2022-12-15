@@ -1,22 +1,28 @@
-@props('data')
-<nav aria-label="Breadcrumb" class="flex">
+@props(['data'])
+<nav aria-label="Breadcrumb" class="flex mb-8">
   <ol role="list" class="flex overflow-hidden rounded-lg border border-gray-200 text-gray-700 dark:border-gray-700 dark:text-gray-200">
     <li class="flex items-center">
-      <a href="#" class="flex h-10 items-center bg-gray-100 px-4 transition hover:text-gray-900 dark:bg-gray-800 dark:hover:text-white">
+      <a href="/" class="flex h-10 items-center bg-gray-200 px-4 transition hover:text-gray-900 dark:bg-gray-800 dark:hover:text-white capitalize">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
         </svg>
-        <span class="ml-1.5 text-xs font-medium"> Home </span>
+        <span class="ml-1.5 text-xs font-medium capitalize"> Home </span>
       </a>
     </li>
-
+    @foreach($data as $key => $navItem)
     <li class="relative flex items-center">
-      <span class="absolute inset-y-0 -left-px h-10 w-4 bg-gray-100 [clip-path:_polygon(0_0,_0%_100%,_100%_50%)] dark:bg-gray-800">
-      </span>
+      <span class="absolute inset-y-0 -left-px h-10 w-4 [clip-path:_polygon(0_0,_0%_100%,_100%_50%)] dark:bg-gray-800 @if($key % 2 === 0) bg-gray-200 @else bg-gray-100 @endif"></span>
 
-      <a href="#" class="flex h-10 items-center bg-white pl-8 pr-4 text-xs font-medium transition hover:text-gray-900 dark:bg-gray-900 dark:hover:text-white">
-        Shirts
-      </a>
+      @if(count($data) - 1 === $key)
+        <span class="flex h-10 items-center  bg-white pl-8 pr-4 text-xs font-medium transition hover:text-gray-900 dark:bg-gray-900 dark:hover:text-white capitalize">
+          {{$navItem['text']}}
+        </span>
+      @else
+        <a href="{{$navItem['path']}}" class="flex h-10 items-center  @if($key % 2 === 0) bg-gray-100 @else bg-gray-200 @endif pl-8 pr-4 text-xs font-medium transition hover:text-gray-900 dark:bg-gray-900 dark:hover:text-white capitalize">
+          {{$navItem['text']}}
+        </a>
+      @endif
     </li>
+    @endforeach
   </ol>
 </nav>

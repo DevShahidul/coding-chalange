@@ -6,6 +6,7 @@
     html {
         scroll-behavior: smooth;
     }
+    
     .container{
         @apply mx-auto px-4 sm:px-6 lg:px-8
     }
@@ -24,4 +25,5 @@
         margin: 0;
         -webkit-appearance: none;
     }
+
 }

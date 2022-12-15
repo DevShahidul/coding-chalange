@@ -24,7 +24,7 @@
 
         @livewireStyles
     </head>
-    <body class="antialiased">
+    <body x-data class="antialiased flex flex-wrap min-h-screen [&>*]:w-full">
        <livewire:header /> 
 
         @yield('content')

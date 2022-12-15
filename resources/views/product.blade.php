@@ -5,9 +5,11 @@
 ?>
 
 @section('title', $productData['pageTitle'])
-@foreach($metaData['values'] as $key => $meta)
-    @section($key, $meta === null ? 'Not added' : $meta)
-@endforeach
+@if($metaData !== null || !empty($metaData))
+    @foreach($metaData['values'] as $key => $meta)
+        @section($key, $meta === null ? 'Not added' : $meta)
+    @endforeach
+@endif
 
 @section('content')
     <div class="container mx-auto">
