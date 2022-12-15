@@ -22,7 +22,7 @@
         @endif
 
         <div class="lg:sticky lg:top-24">
-            <form @submit.prevent="$store.addToCart({{$sku}})" class="space-y-4 lg:pt-8">
+            <form @submit.prevent="addToCart({title: '{{$title}}', image: '{{$productInfo['twitterCardImage']}}', sku: '{{$sku}}', price: '${{$currency}}{{$price}}' })" class="space-y-4 lg:pt-8">
                 <fieldset>
                     <legend class="text-lg font-bold">MPN or GTIN</legend>
                     @if(!empty($productInfo['manufacturerPartNumber']) || $productInfo['manufacturerPartNumber'] !== null)

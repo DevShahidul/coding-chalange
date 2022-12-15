@@ -5,7 +5,7 @@ import './bootstrap';
  
 window.Alpine = Alpine;
 
-Alpine.store('cartData', () => ({
+Alpine.data('cartData', () => ({
     open: false,
     cartItems:  Alpine.$persist([]),
 
@@ -14,19 +14,17 @@ Alpine.store('cartData', () => ({
     },
  
     toggle() {
-        debugger
         this.open = ! this.open
     },
 
-    newProduct: {
-        title: '',
-        price: '',
-        image: '',
+    addToCart(item){
+        this.cartItems.push(item);
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     },
 
-    addToCart(item_sku){
-        console.log(item_sku);
-        this.cartItems = this.cartItem.push(item_sku)
+    removeToCart(item_sku){
+        this.cartItems.splice(this.cartItems.indexOf(item_sku));
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
 }))
  

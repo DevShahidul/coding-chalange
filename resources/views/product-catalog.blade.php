@@ -16,16 +16,16 @@
 
 @section('title', $catalogData['pageTitle'])
 <!-- Meta data rendering -->
-@if($metaData !== null || !empty($metaData))
+@if($metaData)
     @foreach($metaData['values'] as $key => $meta)
-        @section($key, $meta === null ? 'Not added' : $meta)
+        @section($key, $meta == null ? 'Not added' : $meta)
     @endforeach
 @endif
 
 @section('content')
     <div class="container mx-auto py-8 sm:py-12">
         <x-breadcrumb :data="$breadCrumbData" />
-        <header>
+        <div>
             <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
                 {{$catalogData['pageTitle']}}
             </h2>
@@ -33,7 +33,7 @@
             @if( !empty($excerpt))
                 <p class="max-w-md mt-4 text-gray-500">{{$excerpt}}</p>
             @endif
-        </header>
+        </div>
 
         <div class="flex items-center justify-between mt-8">
             <div class="flex border border-gray-100 divide-x divide-gray-100 rounded">

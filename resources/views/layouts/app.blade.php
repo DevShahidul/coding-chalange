@@ -24,7 +24,7 @@
 
         @livewireStyles
     </head>
-    <body x-data class="antialiased flex flex-wrap min-h-screen [&>*]:w-full">
+    <body x-data="cartData" class="antialiased flex flex-wrap min-h-screen [&>*]:w-full">
        <livewire:header /> 
 
         @yield('content')

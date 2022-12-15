@@ -22,13 +22,13 @@ class PageController extends Controller
     public function productView($product_sku)
     {
         $productData = $this->getJsonData("product.json");
-        $productSku = $productData['contentElement']['values']['productSku'];
+        // $productSku = $productData['contentElement']['values']['productSku'];
 
-        if($product_sku === $productSku){
-            return view('product', compact('productData'));
-        }else{
+        if($product_sku != $productData['contentElement']['values']['productSku']){
             return redirect()->back();
         }
+        
+        return view('product', compact('productData'));
 
     }
 

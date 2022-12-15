@@ -7,9 +7,9 @@
 
 @section('title', $homeData['pageTitle'])
 
-@if($metaData !== null || !empty($metaData))
+@if($metaData)
     @foreach($metaData['values'] as $key => $meta)
-        @section($key, $meta === null ? 'Not added' : $meta)
+        @section($key, $meta == null ? 'Not added' : $meta)
     @endforeach
 @endif
 

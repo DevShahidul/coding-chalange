@@ -1,5 +1,5 @@
 <footer aria-label="Site Footer" class="bg-slate-100 dark:bg-gray-800 mt-16 md:mt-24 self-end">
-    <div class="container py-16">
+    <div class="container py-16 mx-auto">
         <div class="text-center">
             <a href="/" class="text-3xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Brand</a>
 

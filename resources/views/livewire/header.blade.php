@@ -1,7 +1,7 @@
 <!-- Header component -->
 <header class="header sticky z-50 top-0 shadow-md shadow-slate-100 dark:shadow-gray-700">
     <nav class="bg-white dark:bg-gray-800" x-data="{ dropdownExpanded: false, navExpanded: false, toggleNav() {this.navExpanded = !this.navExpanded} }">
-        <div class="container">
+        <div class="container mx-auto">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
@@ -68,7 +68,7 @@
                                 @if(!empty($item['children']))
                                 <div x-cloak class="absolute left-0 z-10 w-48 pointer-events-none group-hover:pointer-events-auto mt-1 origin-top-left bg-white dark:bg-gray-700 dark:text-gray-300 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out duration-300 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                     @foreach ($item['children'] as $child)
-                                        <a href="{{$child['url']}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-0">{{$child['title']}}</a>
+                                        <a href="{{$child['url']}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem" tabindex="-1">{{$child['title']}}</a>
                                     @endforeach
                                 </div>
                                 @endif
@@ -99,196 +99,80 @@
 
                     <!-- Cart -->
                     <div class="ml-4 flow-root lg:ml-6 relative">
-                        <button role="button" @click="$store.open = !$store.open" class="group -m-2 flex items-center p-2">
+                        <button role="button" @click="open = !open" class="group -m-2 flex items-center p-2">
                             <!-- Heroicon name: outline/shopping-bag -->
-                            <svg class="h-6 w-6 flex-shrink-0  group-hover:text-gray-500" :class="$store.open ? 'text-gray-500' : 'text-gray-400'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <svg class="h-6 w-6 flex-shrink-0  group-hover:text-gray-500" :class="open ? 'text-gray-500' : 'text-gray-400'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                             </svg>
-                            <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-500" x-text="$store.cartListItems"></span>
+                            <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-500" x-text="cartListItems"></span>
                             <span class="sr-only">items in cart, view bag</span>
                         </button>
 
-                        <div style="display: none;" x-show="$store.open" @click.outside="$store.open = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute right-0 mt-3 block w-screen max-w-sm p-8 pt-4 bg-gray-100 border border-gray-200" aria-expanded="$store.open" tabindex="-1">
+                        <div style="display: none;" x-show="open" @click.outside="open = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute right-0 mt-3 block w-screen max-w-sm p-8 pt-4 bg-gray-100 border border-gray-200" aria-expanded="open" tabindex="-1">
                             <div class="mt-6 space-y-6">
-                                <ul class="space-y-4">
-                                <li class="flex items-center">
-                                    <img
-                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                    alt=""
-                                    class="object-cover w-16 h-16 rounded"
-                                    />
+                                <div class="overflow-hidden lg:overflow-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar:bg-transparent scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300 scrollbar-track:!rounded dark:scrollbar-track:!bg-slate-500/[0.16] dark:scrollbar-thumb:!bg-slate-500/50 max-h-96 lg:supports-scrollbars:pr-2">
+                                    <ul class="space-y-4">
+                                        <template x-for="item in cartItems">
+                                        <li class="flex items-center">
 
-                                    <div class="ml-4">
-                                    <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                                            <template x-if="!item.image">
+                                            <div class="bg-gray-100 rounded w-16 h-16 flex flex-wrap justify-center items-center text-gray-900">No image</div>
+                                            </template>
+                                            <template x-if="item.image">
+                                            <img
+                                            :src="item.image"
+                                            alt="cart image"
+                                            class="object-cover w-16 h-16 rounded"
+                                            />
+                                            </template>
 
-                                    <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                        <div>
-                                        <dt class="inline">Size:</dt>
-                                        <dd class="inline">XXS</dd>
-                                        </div>
+                                            <div class="ml-4">
+                                            <h3 class="text-sm text-gray-900" x-text="item.title"></h3>
 
-                                        <div>
-                                        <dt class="inline">Color:</dt>
-                                        <dd class="inline">White</dd>
-                                        </div>
-                                    </dl>
-                                    </div>
+                                            <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
+                                                <div>
+                                                <dt class="inline">SKU:</dt>
+                                                <dd class="inline" x-text="item.sku"></dd>
+                                                </div>
 
-                                    <div class="flex items-center justify-end flex-1 gap-2">
-                                    <form>
-                                        <label for="Line1Qty" class="sr-only"> Quantity </label>
+                                                <div>
+                                                <dt class="inline">Price:</dt>
+                                                <dd class="inline" x-text="item.price"></dd>
+                                                </div>
+                                            </dl>
+                                            </div>
 
-                                        <input
-                                        type="number"
-                                        min="1"
-                                        value="1"
-                                        id="Line1Qty"
-                                        class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                                        />
-                                    </form>
+                                            <div class="flex items-center justify-end flex-1 gap-2">
 
-                                    <button class="text-gray-600 transition hover:text-red-600">
-                                        <span class="sr-only">Remove item</span>
+                                            <button @click="removeToCart(item.sku)" class="text-gray-600 transition hover:text-red-600">
+                                                <span class="sr-only">Remove item</span>
 
-                                        <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="w-4 h-4"
-                                        >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                        />
-                                        </svg>
-                                    </button>
-                                    </div>
-                                </li>
-
-                                <li class="flex items-center">
-                                    <img
-                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                    alt=""
-                                    class="object-cover w-16 h-16 rounded"
-                                    />
-
-                                    <div class="ml-4">
-                                    <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-
-                                    <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                        <div>
-                                        <dt class="inline">Size:</dt>
-                                        <dd class="inline">XXS</dd>
-                                        </div>
-
-                                        <div>
-                                        <dt class="inline">Color:</dt>
-                                        <dd class="inline">White</dd>
-                                        </div>
-                                    </dl>
-                                    </div>
-
-                                    <div class="flex items-center justify-end flex-1 gap-2">
-                                    <form>
-                                        <label for="Line2Qty" class="sr-only"> Quantity </label>
-
-                                        <input
-                                        type="number"
-                                        min="1"
-                                        value="1"
-                                        id="Line2Qty"
-                                        class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                                        />
-                                    </form>
-
-                                    <button class="text-gray-600 transition hover:text-red-600">
-                                        <span class="sr-only">Remove item</span>
-
-                                        <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="w-4 h-4"
-                                        >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                        />
-                                        </svg>
-                                    </button>
-                                    </div>
-                                </li>
-
-                                <li class="flex items-center">
-                                    <img
-                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                    alt=""
-                                    class="object-cover w-16 h-16 rounded"
-                                    />
-
-                                    <div class="ml-4">
-                                    <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-
-                                    <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                        <div>
-                                        <dt class="inline">Size:</dt>
-                                        <dd class="inline">XXS</dd>
-                                        </div>
-
-                                        <div>
-                                        <dt class="inline">Color:</dt>
-                                        <dd class="inline">White</dd>
-                                        </div>
-                                    </dl>
-                                    </div>
-
-                                    <div class="flex items-center justify-end flex-1 gap-2">
-                                    <form>
-                                        <label for="Line3Qty" class="sr-only"> Quantity </label>
-
-                                        <input
-                                        type="number"
-                                        min="1"
-                                        value="1"
-                                        id="Line3Qty"
-                                        class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                                        />
-                                    </form>
-
-                                    <button class="text-gray-600 transition hover:text-red-600">
-                                        <span class="sr-only">Remove item</span>
-
-                                        <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="w-4 h-4"
-                                        >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                        />
-                                        </svg>
-                                    </button>
-                                    </div>
-                                </li>
-                                </ul>
-
+                                                <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="w-4 h-4"
+                                                >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                                                />
+                                                </svg>
+                                            </button>
+                                            </div>
+                                        </li>
+                                        </template>
+                                    </ul>
+                                </div>
                                 <div class="space-y-4 text-center">
                                 <a
                                     href="#"
                                     class="block px-5 py-3 text-sm text-gray-600 transition border border-gray-600 rounded hover:ring-1 hover:ring-gray-400"
                                 >
-                                    View my cart (2)
+                                    View my cart (<span x-text="cartListItems"></span>)
                                 </a>
 
                                 <a
