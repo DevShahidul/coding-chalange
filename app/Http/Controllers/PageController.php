@@ -15,14 +15,12 @@ class PageController extends Controller
     public function index()
     {
         $homeData = $this->getJsonData("home.json");
-        // dd($homeData);
         return view('home', compact('homeData'));
     }
 
     public function productView($product_sku)
     {
         $productData = $this->getJsonData("product.json");
-        // $productSku = $productData['contentElement']['values']['productSku'];
 
         if($product_sku != $productData['contentElement']['values']['productSku']){
             return redirect()->back();
@@ -35,7 +33,6 @@ class PageController extends Controller
     public function catalog()
     {
         $catalogData = $this->getJsonData("catalog.json");
-        // dd($homeData);
         return view('product-catalog', compact('catalogData'));
     }
 

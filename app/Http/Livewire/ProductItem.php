@@ -19,7 +19,6 @@ class ProductItem extends Component
     }
 
     public function mount($data){
-        // dd($data);
         $this->title = $data['pageTitle'];
         $this->currency = $data['metadata']['values']['currency'];
         $this->productInfo = $data['contentElement']['values'];
